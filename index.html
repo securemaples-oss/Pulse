@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DirectChat — DMs Only</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="auth-screen" class="auth-wrapper">
+    <div class="auth-card">
+      <h1 id="auth-title">Welcome back!</h1>
+      <p id="auth-subtitle">Sign in with just a username and password.</p>
+      <form id="auth-form">
+        <label>USERNAME</label>
+        <input type="text" id="username-input" required minlength="2" maxlength="24" autocomplete="off" />
+        <label>PASSWORD</label>
+        <input type="password" id="password-input" required minlength="4" />
+        <div id="auth-error" class="error-msg"></div>
+        <button type="submit" id="auth-submit">Log In</button>
+      </form>
+      <p class="switch-text">
+        <span id="switch-prompt">Need an account?</span>
+        <a href="#" id="switch-mode">Register</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="app-screen" class="app-container hidden">
+    <aside class="sidebar">
+      <div class="sidebar-header">Direct Messages</div>
+      <div class="user-search">
+        <input type="text" id="search-users" placeholder="Find a user..." />
+      </div>
+      <div id="user-list" class="user-list"></div>
+      <div class="me-bar">
+        <div class="me-info">
+          <div id="me-avatar" class="avatar"></div>
+          <div>
+            <div id="me-name" class="me-name"></div>
+            <div class="me-status">Online</div>
+          </div>
+        </div>
+        <button id="logout-btn" title="Log Out">Exit</button>
+      </div>
+    </aside>
+
+    <main class="chat-area">
+      <header class="chat-header">
+        <span class="at-symbol">@</span>
+        <span id="chat-with-name">Select a user to start chatting</span>
+      </header>
+      <div id="messages-box" class="messages-box">
+        <div class="empty-state">Pick someone from the left sidebar to send a Direct Message.</div>
+      </div>
+      <form id="message-form" class="message-form hidden">
+        <input type="text" id="message-input" placeholder="Message @user" autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
